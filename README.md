@@ -50,7 +50,7 @@ pip install sentence-transformers
 open_racot: False
 ```
 
-3.Using the ready-made pipeline
+4.Using the ready-made pipeline
 
 We use the official pipeline (specifically SequentialPipeline) to implement the RAG workflow. In this case, you only need to configure the config and load the corresponding pipeline. Additionally, we would like to emphasize that SequentialPipeline is a basic pipeline, and you can easily adapt it to different methods through simple migration.
 First, load the configuration for the entire workflow, which records various hyperparameters required for the RAG process. You can input a YAML file as a parameter, or directly input it as a variable.
