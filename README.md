@@ -21,3 +21,27 @@ We have ported the RaCoT framework to the widely recognized and followed [FlashR
    ```bash
     uvx hf download Qwen/Qwen2.5-1.5B-Instruct
    ```
+
+2.We follow the procedure of FlashRAG to set up the environment, and you may:
+
+```base
+pip install flashrag-dev --pre
+```
+or
+
+```bash
+git clone https://github.com/RUC-NLPIR/FlashRAG.git
+cd FlashRAG
+pip install -e .
+```
+
+3.To use RaCoT, you need to download the additional dependencies:
+```bash
+# Install sentence-transformers
+pip install sentence-transformers
+
+# Install pyserini for bm25
+pip install pyserini
+```：
+
+4.
