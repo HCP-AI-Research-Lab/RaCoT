@@ -42,18 +42,11 @@ pip install sentence-transformers
 ```：
 
 ## :rocket: Quick Start
+We use the official pipeline (specifically SequentialPipeline) to implement the RAG workflow. In this case, you only need to configure the config and load the corresponding pipeline. Additionally, we would like to emphasize that SequentialPipeline is a basic pipeline, and you can easily adapt it to different methods through simple migration.
+
 1.Please follow the official documentation of FlashRAG to complete the setup of the retrieval dataset.
 
-2.With RaCoT, you can choose whether to enable RaCoT in the file flashrag/config/basic_config.yaml.
-
-```bash
-open_racot: False
-```
-
-4.Using the ready-made pipeline
-
-We use the official pipeline (specifically SequentialPipeline) to implement the RAG workflow. In this case, you only need to configure the config and load the corresponding pipeline. Additionally, we would like to emphasize that SequentialPipeline is a basic pipeline, and you can easily adapt it to different methods through simple migration.
-First, load the configuration for the entire workflow, which records various hyperparameters required for the RAG process. You can input a YAML file as a parameter, or directly input it as a variable.
+2.load the configuration for the entire workflow, which records various hyperparameters required for the RAG process. You can input a YAML file as a parameter, or directly input it as a variable.
 
 ```python
 from flashrag.config import Config
@@ -65,7 +58,13 @@ my_config = Config(
     config_dict = config_dict
 ```
 
-Next, load the corresponding dataset and initialize the pipeline, where all required components will be automatically instantiated and configured.
+3.With RaCoT, you can choose whether to enable RaCoT in the file flashrag/config/basic_config.yaml.
+
+```bash
+open_racot: False
+```
+
+4.Next, load the corresponding dataset and initialize the pipeline, where all required components will be automatically instantiated and configured.
 
 ```python
 from flashrag.utils import get_dataset
