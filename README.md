@@ -39,9 +39,96 @@ pip install -e .
 ```bash
 # Install sentence-transformers
 pip install sentence-transformers
-
-# Install pyserini for bm25
-pip install pyserini
 ```：
 
-4.
+## :rocket: Quick Start
+1.Please follow the official documentation of FlashRAG to complete the setup of the retrieval dataset.
+
+2.With RaCoT, you can choose whether to enable RaCoT in the file flashrag/config/basic_config.yaml.
+
+```bash
+open_racot: False
+```
+
+3.Using the ready-made pipeline
+
+We use the official pipeline (specifically SequentialPipeline) to implement the RAG workflow. In this case, you only need to configure the config and load the corresponding pipeline. Additionally, we would like to emphasize that SequentialPipeline is a basic pipeline, and you can easily adapt it to different methods through simple migration.
+First, load the configuration for the entire workflow, which records various hyperparameters required for the RAG process. You can input a YAML file as a parameter, or directly input it as a variable.
+
+```python
+from flashrag.config import Config
+
+# hybrid load configs
+config_dict = {'data_dir': 'dataset/'}
+my_config = Config(
+    config_file_path = 'my_config.yaml',
+    config_dict = config_dict
+```
+
+Next, load the corresponding dataset and initialize the pipeline, where all required components will be automatically instantiated and configured.
+
+```python
+from flashrag.utils import get_dataset
+from flashrag.pipeline import SequentialPipeline
+from flashrag.prompt import PromptTemplate
+from flashrag.config import Config
+
+config_dict = {'data_dir': 'dataset/'}
+my_config = Config(
+    config_file_path = 'my_config.yaml',
+    config_dict = config_dict
+)
+all_split = get_dataset(my_config)
+test_data = all_split['test']
+
+pipeline = SequentialPipeline(my_config)
+```
+
+You can specify your own input prompt using `PromptTemplete`:
+
+```python
+prompt_templete = PromptTemplate(
+    config,
+    system_prompt = "Answer the question based on the given document. Only give me the answer and do not output any other words.\nThe following are given documents.\n\n{reference}",
+    user_prompt = "Question: {question}\nAnswer:"
+)
+pipeline = SequentialPipeline(
+  my_config,
+  prompt_template = prompt_templete
+)
+```
+
+Finally, execute `pipeline.run` to obtain the final result.
+```python
+output_dataset = pipeline.run(test_data, do_eval=True)
+```
+
+The output_dataset stores per-item intermediate results and metric scores. If save_intermediate_data and save_metric_score are enabled, the intermediate outputs and overall evaluation score are also saved to disk.
+
+
+## Citation
+
+If you find this project useful, please cite:
+```bibtex
+@misc{cai2025racotplugandplaycontrastiveexample,
+      title={RaCoT: Plug-and-Play Contrastive Example Generation Mechanism for Enhanced LLM Reasoning Reliability}, 
+      author={Kaitong Cai and Jusheng Zhang and Yijia Fan and Jing Yang and Keze Wang},
+      year={2025},
+      eprint={2510.22710},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2510.22710}, 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
