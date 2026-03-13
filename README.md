@@ -1,5 +1,6 @@
 # RaCoT: Plug-and-Play Contrastive Example Generation Mechanism for Enhanced LLM Reasoning Reliability
-> Official code for the AAAI 2026 oral paper [“RaCoT: Plug-and-Play Contrastive Example Generation Mechanism for Enhanced LLM Reasoning Reliability”](https://arxiv.org/abs/2510.22710).  
+> Official code for the AAAI 2026 oral paper [“RaCoT: Plug-and-Play Contrastive Example Generation Mechanism for Enhanced LLM Reasoning Reliability”](https://arxiv.org/abs/2510.22710).
+> Contact me ： lanqinb@gmail.com
 <div align="center">
 <img src="img/434981.png" width="1000">
 </div>
@@ -10,7 +11,7 @@
 Retrieval-Augmented Generation (RAG) faces a core bottleneck with knowledge-sparse and semantically ambiguous long-tail queries, where retrieval noise distorts reasoning and necessitates costly post-processing. To tackle this, we propose RaCoT (Retrieval-aware Contrastive-of-Thought), a novel framework that shifts contrastive thinking to the pre-retrieval stage. By automatically generating a semantically adjacent yet differently answered contrastive question and extracting a Δ-Prompt to capture their key differences, RaCoT guides the model to proactively focus on the "critical details that determine answer divergence." This approach allows it to suppress semantic interference within a single retrieval pass, overcoming the theoretical bottleneck of single-vector queries that struggle to simultaneously encode signals for what to attend to and what to ignore. On six authoritative benchmarks, including PopQA and TriviaQA-unfiltered, RaCoT outperforms strong baselines like RankRAG and Self-RAG by 0.9-2.4 percentage points. It exhibits superior robustness, with a performance drop of only 8.6% in adversarial tests, far surpassing the over 15\% degradation in other methods. Furthermore, its low latency (3.12s) and token overhead (11.54) place it on the accuracy-efficiency Pareto frontier, while ablation studies validate the necessity of each component. Ultimately, RaCoT reframes the RAG paradigm from ``post-hoc context cleaning" to "a priori shaping of discriminative reasoning", offering an efficient and robust path toward reliable AI systems for real-time, resource-constrained deployments.
 
 ## :mag_right: Roadmap
-We have ported the RaCoT framework to the widely recognized and followed [FlashRAG](https://github.com/RUC-NLPIR/FlashRAG/tree/main) framework for ease of evaluation! RaCoT is still under active development—please contact me (Kaitong Cai) for any code-related issues!
+We have ported the RaCoT framework to the widely recognized and followed [FlashRAG](https://github.com/RUC-NLPIR/FlashRAG/tree/main) framework for ease of evaluation! RaCoT is still under active development—please contact me (Kaitong Cai(lanqinb@gmail.com)) for any code-related issues!
 - [ ] Adapted to more RAG methodology frameworks
 - [ ] Counterfactual-generated question fine-tuning data（Underutilization may result in suboptimal performance.）
 - [ ] Adapted to more evaluation datasets
