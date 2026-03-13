@@ -12,7 +12,7 @@ Retrieval-Augmented Generation (RAG) faces a core bottleneck with knowledge-spar
 ## :mag_right: Roadmap
 We have ported the RaCoT framework to the widely recognized and followed [FlashRAG](https://github.com/RUC-NLPIR/FlashRAG/tree/main) framework for ease of evaluation! RaCoT is still under active development—please contact me (Kaitong Cai) for any code-related issues!
 - [ ] Adapted to more RAG methodology frameworks
-- [ ] Counterfactual-generated question fine-tuning data
+- [ ] Counterfactual-generated question fine-tuning data（Underutilization may result in suboptimal performance.）
 - [ ] Adapted to more evaluation datasets
 - [ ] The code requires performance optimization in certain sections and has not yet been fully adapted.
 
