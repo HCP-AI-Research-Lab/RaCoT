@@ -16,7 +16,6 @@ We have ported the RaCoT framework to the widely recognized and followed [FlashR
 - [ ] Adapted to more RAG methodology frameworks
 - [ ] Counterfactual-generated question fine-tuning data（Underutilization may result in suboptimal performance.）
 - [ ] Adapted to more evaluation datasets
-- [ ] The code requires performance optimization in certain sections and has not yet been fully adapted.
 
 ## :wrench: Installation
 1.Please first download [Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/tree/main) from the official Hugging Face (HF) website and place it in the RaCoT folder.This step is to download and deploy the counterfactual generation model, and you may also freely choose any model you prefer.
