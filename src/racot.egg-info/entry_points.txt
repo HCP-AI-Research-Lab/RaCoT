@@ -1,0 +1,3 @@
+[console_scripts]
+flashrag-tools = RaCoT.tools.cli:main
+racot-tools = RaCoT.tools.cli:main
