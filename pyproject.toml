@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "racot"
+version = "0.1.0"
+description = "Standalone RaCoT package with a FlashRAG-style retrieval pipeline."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Kaitong Cai", email = "lanqinb@gmail.com"},
+]
+keywords = ["rag", "retrieval-augmented-generation", "racot", "flashrag", "llm"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "torch",
+  "transformers",
+  "datasets",
+  "faiss-cpu",
+  "numpy",
+  "tqdm",
+  "requests",
+  "PyYAML",
+  "bm25s",
+  "PyStemmer",
+  "openai",
+  "tiktoken",
+]
+
+[project.scripts]
+racot-tools = "RaCoT.tools.cli:main"
+flashrag-tools = "RaCoT.tools.cli:main"
+
+[project.urls]
+Paper = "https://arxiv.org/abs/2510.22710"
+Upstream = "https://github.com/RUC-NLPIR/FlashRAG"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "build>=1.2.0",
+  "black>=24.0.0",
+  "pre-commit>=3.0.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["RaCoT*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
